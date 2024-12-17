@@ -1,6 +1,7 @@
 package com.ino.urlshorter.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ public class UrlEntity {
     @Id
     private String id;
     private String fullUrl;
+    @Indexed(expireAfter = "1")
     private LocalDateTime expireAt;
 
     public UrlEntity() {
